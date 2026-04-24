@@ -16,6 +16,7 @@ import 'source-map-support/register';
 import * as compression from 'compression';
 import { CronJob } from 'cron';
 import * as express from 'express';
+import * as helmet from 'helmet';
 import * as fs from 'fs';
 import * as winston from 'winston';
 
@@ -32,6 +33,7 @@ process.on('uncaughtException', err => {
 
 // let's get this junker running
 const app = express();
+app.use(helmet());
 
 // allow disabling CSP for local/dev server
 let cspEnabled = true;
